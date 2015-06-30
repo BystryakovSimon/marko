@@ -1,0 +1,25 @@
+<div class="carusel-big">
+    <ul>
+        <li class="carusel-big-left"><a href="#" title="" class="carusel-img-shadow"><img src="{{ STATIC_URL }}images/carousel-big-img1.jpg" alt="" title="" width="150" height="120" /></a></li>
+        <li class="carusel-big-center"><span class="carusel-big-center-img"><img src="{{ STATIC_URL }}images/carousel-big-img3.jpg" alt="" title="" width="720" /></span>                           
+            <div class="carusel-big-info">
+                <h3>Смесители &mdash; Модель {{ lastgallerymixer.name }}</h3>
+                {{ lastgallerymixer.title|safe }}
+                <div class="carusel-big-info-img">
+                    <ul>
+                        {% for img in lastgallerymixer.get_images.all %}
+                        <li>    
+                            <a href="{{ MEDIA_URL }}{{ img.img_full }}" title="" class="carusel-big-info-img-shadow"><img src="{{ MEDIA_URL }}{{ img.img_small }}" alt="{{ img.alt }}" title="" width="86" height="68" /></a>  
+                        </li>         
+                        {% endfor %}                         
+                    </ul>                                           
+                </div>      
+                <div class="clear-all"></div>
+                <span class="carusel-big-info-price">Цена: <span  class="carusel-big-info-price1">{{ lastgallerymixer.price }} руб.</span></span>
+            </div>
+        </li>   
+        <li class="carusel-big-right"><a href="#" title="" class="carusel-img-shadow"><img src="{{ STATIC_URL }}images/carousel-big-img2.jpg" alt="" title="" width="150" height="120" /></a></li>
+    </ul>
+    <a href="#" title="" class="carusel-left"></a>
+    <a href="#" title="" class="carusel-right"></a>
+</div>  

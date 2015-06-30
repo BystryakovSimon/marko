@@ -1,0 +1,14 @@
+<div class="color">
+    <div class="color-inner">
+    {% for color in lastcolors %}
+        <a href="{{ MEDIA_URL }}{{ color.img_small }}" title="{{ color.title }}" 
+        {% if forloop.counter == 5 or forloop.counter == 10 %}
+        	class="last"
+        {% endif %}>
+            <span class="color-inner-shadow"><img src="{{ MEDIA_URL }}{{ color.img_small }}" alt="{{ color.alt }}" title="{{ color.title }}" width="68" height="28" /></span>
+            <span class="text-articul">{{ color.number }}</span>                       
+            <p class="text-color">{{ color.name }}</p>
+        </a>
+    {% endfor %}
+    </div>
+</div>

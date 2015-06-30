@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+<link href="{{ MEDIA_URL }}css/jquery-1.9.1.min.js" rel="stylesheet" type="text/css" />
+<link href="{{ MEDIA_URL }}css/fancyInput.css" rel="stylesheet" type="text/css" />
+<link href="{{ MEDIA_URL }}js/fancyInput.js" rel="stylesheet" type="text/css" />
+
+{% block content %}  
+<div id="left-column">
+    <div class="block">
+        <div class="content">
+        </div>
+        <div class="end-block"></div>
+    </div>
+</div>
+<div id="right-column">
+    <div id="main-content">
+        <h2 style="z-index: 100;position: relative;">Авторизация</h2>
+        <div id="auth-div">
+        <form method="post" action="/auth/">
+                            {% csrf_token %}
+        
+            <p><label for="id_username">Имя пользователя:</label> <section class='input'><div class="fancyInput"><input id="id_username" name="username" maxlength="30" type="text"></div></section></p>
+        
+        
+            <p><label for="id_password">Пароль:</label> <section class='input'><div class="fancyInput"><input name="password" id="id_password" type="password"  ></div></section></p>
+
+            <input type="submit" value="Войти" class="submit_button" />
+        </form>
+        </div>
+    </div>
+    <div class="end-center-block"></div>
+</div>
+{% endblock %}
