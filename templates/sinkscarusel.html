@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% load  cms_tags sekizai_tags %}
+{% load staticfiles %}
+
+{% block main %}
+<ul class="main-carusel">
+	<li>
+		<div class="content">	
+			{% placeholder carusel %}
+		</div>		
+	</li>
+</ul>
+{% endblock %}
+
+
+{% block selectsinks %}class="select"{% endblock %}

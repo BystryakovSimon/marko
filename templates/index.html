@@ -1,0 +1,135 @@
+﻿{% load  cms_tags sekizai_tags %}
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="{% static "js/main.js" %}"></script>
+{% render_block "css" %}
+{% render_block "js" %} 
+</head>
+<body>
+	<div class="wrapper">
+		{% block main %}{% endblock %}
+		<div class="header">
+			<div class="header-str-right"></div>
+			<div class="header-str-left"></div>
+			<div class="header-inner">
+				<div class="phone"><span>+7 (8422)</span> 988 988</div>						
+				<ul class="nav">
+					<li><a id="request-a-call-link" href="/request-a-call/" title="Заказать звонок"><span class="text text1">Заказать звонок</span></a></li>
+					<li><a id="ask-a-question-link" href="/ask-a-question/" title="Задать вопрос"><span class="text text2">Задать вопрос</span></a></li>					
+					<li><a href="mailto:#"  title="Отправить e-mail"><span class="text text3">Отправить e-mail</span></a></li>
+					<li><a href="/contacts/" id="contacts-link" title="Наши контакты"><span class="text text4">Наши контакты</span></a></li>
+				</ul>				
+				<a href="/" title="MAR’CO (Marble company)" class="logo"><img src="{{ STATIC_URL }}images/logo.png" alt="MAR’CO (Marble company)" title="MAR’CO (Marble company)" width="253" height="84" /></a>
+			</div>	
+		</div>	
+		<ul class="menu-inner">
+			<li>
+				<a href="/mixers/" title="Смесители" {% block selectmixers %}{% endblock %}>Смесители<span class="menu-inner-border">Смесители</span><span class="menu-arrow"></span></a>
+			</li>
+			<li>
+				<a href="/" title="Столешницы"{% block selectcountertops %}{% endblock %}>Столешницы<span class="menu-inner-border">Столешницы</span><span class="menu-arrow"></span></a>
+			</li>
+			<li>
+				<a href="/sinks/" title="Мойки"{% block selectsinks %}{% endblock %}>Мойки<span  class="menu-inner-border">Мойки</span><span class="menu-arrow"></span></a>
+			</li>
+		</ul>
+		<div class="footer">
+			{% placeholder footer %}
+			<div class="footer-inner">
+				<a href="#" title="Аквилон — разработка сайта" class="akv">&mdash; <span class="line">разработка сайта</span><span class="footer-inner-shadow">&mdash; <span class="line">разработка сайта</span></span></a>
+				<span class="footer-inner-no-shadow">2013 © &nbsp;<span class="footer-inner-shadow-no-underline">2013 © &nbsp;</span></span>
+				<a href="#" title="2013 © MAR’CO (Marble company)" class="marko">MAR’CO (Marble company)<span class="footer-inner-shadow">MAR’CO (Marble company)</span></a>
+				<div class="contacts-inner">				
+					<a href="#" title="Контактная информация" class="contacts-inner contacts-inner1">Контактная информация<span>Контактная информация</span></a>
+					<span class="contacts-inner2">|<span>|</span></span>
+					<a href="#" title="Схема проезда" class="contacts-inner contacts-inner1">Схема проезда<span>Схема проезда</span></a>
+				</div>				
+			</div>
+		</div>
+	</div>
+
+	<div class="form-calling-shadow" id="request-a-call-div">
+		<div class="form-calling-border">
+			<div class="form-calling">
+				<h2>Заказать звонок</h2>
+				<a id="close-request-a-call-div" href="#" title="Закрыть">Закрыть</a>
+				<p>Мы всегда рады новому сотрудничеству.</p>
+				<p>Здесь Вы можете оставить заявку, и наш консультант перезвонит Вам.</p>
+				<p>Пожалуйста, заполните все поля формы и укажите интересующий Вас вопрос.</p>				
+				<form id="request-a-call-form" enctype="multipart/form-data" method="POST" action="/request-a-call/" name="request-a-call">
+                	<input class="family" type="text" id="id_fio" name="fio"><span class="back-grey1">Фио &hellip;</span>
+
+					<input id="id_phonenumber" name="phonenumber" type="text" value="" class="organization" /><span class="back-grey1">Телефон &hellip;</span>
+			        <input type="hidden" id="id_submit__request-a-call" value="1" name="submit__request-a-call">
+					<div style="display:none"><input type="hidden" value="CRvSPg80eNJM857Vs3HpxL8u06cYTv4t" name="csrfmiddlewaretoken"></div>
+				</form>
+				<a id="request-a-call-submit" href="#" title="Отправить" class="close">Отправить</a>
+				<div class="clear-all"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-qua-shadow" id="ask-a-question-div">
+		<div class="form-qua-border">
+			<div class="form-qua">
+				<h2>Задать вопрос</h2>
+				<a id="close-ask-a-question-div" href="#" title="Закрыть">Закрыть</a>
+				<div class="clear-all"></div>
+				<p>Здесь Вы можете задать вопрос.</p>
+				<p>Пожалуйста, заполните все поля формы и укажите интересующий Вас вопрос.</p>				
+				<form id="question-form" enctype="multipart/form-data" method="POST" action="/ask-a-question/" name="ask-a-question">
+					<input type="text" value="" class="family" id="id_fio" name="fio" /><span class="back-grey1">Фио &hellip;</span>
+
+					<input id="id_phonenumber" name="phonenumber" type="text" value="" class="organization" /><span class="back-grey1">Телефон &hellip;</span>
+
+					<input type="text" value="" class="organization"  id="id_company" name="company" /><span class="back-grey1">Органиация &hellip;</span>
+
+					<input type="text" value="" class="email"  id="id_e-mail" name="e-mail" /><span class="back-grey1">E-mail &hellip;</span>
+
+					<input type="text" value="" class="qua" cols="40" rows="10" id="id_text" /><span class="back-grey2">Вопрос &hellip;</span>
+
+			        <input type="hidden" id="id_submit__ask-a-question" value="1" name="submit__ask-a-question">
+    
+    				<div style="display:none"><input type="hidden" value="CRvSPg80eNJM857Vs3HpxL8u06cYTv4t" name="csrfmiddlewaretoken"></div>
+				</form>
+				<a id="qustion-submit" href="#" title="Отправить" class="close">Отправить</a>
+				<div class="clear-all"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-map-shadow" id="contacts-div">
+		<div class="form-map-border">
+			<div class="form-map">
+				<h2>Наши контакты</h2>
+				<a id="close-contacts-div" href="#" title="Закрыть" class="arrow">Закрыть</a>
+				<div class="clear-all"></div>
+				<div class="form-map-col1">
+					<p>Телефон +7 495 620-91-91</p>
+					<p>Адрес 107078, г. Москва, ул. Каланчевская, д. 27</p>
+				</div>
+				<div class="form-map-col2">
+					<p>Реквезиты</p>
+					<p>ИНН: 8401005730</p>
+					<p>КПП: 997550001</p>
+					<p>ОКАТО: 04121000000</p>
+				</div>
+				<div class="clear-all"></div>
+				<div class="form-map-col1">
+					<a href="{{ STATIC_URL }}images/map1b.jpg" title="" class="text-shadow" target="_blank"><img src="{{ STATIC_URL }}images/map1m.jpg" alt="" title="" width="440" height="330" /></a>
+				</div>
+				<div class="form-map-col2">
+					<a href="{{ STATIC_URL }}images/map2b.jpg" title="" class="text-shadow" target="_blank"><img src="{{ STATIC_URL }}images/map2m.jpg" alt="" title="" width="440" height="330" /></a>
+				</div>
+				<div class="clear-all"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

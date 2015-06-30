@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% load cms_tags sekizai_tags %}
+{% load staticfiles %}
+
+{% block main %}
+<ul class="main-carusel">
+	<li>
+		<div class="content">				
+			{% placeholder gallery %}
+			<div class="text-shadow">
+				<div class="text">
+					<div class="text-scroll">
+						<h1>{% placeholder contenttitle %}</h1>
+						{% placeholder picture %}
+						{% placeholder content %}
+					</div>
+				</div>
+			</div>
+		</div>		
+	</li>
+</ul>
+{% endblock %}
+
+{% block selectcountertops %}class="select"{% endblock %}
